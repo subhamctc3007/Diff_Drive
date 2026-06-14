@@ -4,7 +4,7 @@
   <name>diff_bot_description</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="subhambtech22@vssut.ac.in">subham</maintainer>
+  <maintainer email="soumyajit@vssut.ac.in">Soumyajit</maintainer>
   <license>TODO: License declaration</license>
 
   <test_depend>ament_copyright</test_depend>

@@ -1,21 +1,32 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="Diff_Bot">
-    <!-- Base Plate -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="diff_bot">
+
+    <!-- Inertial Macros -->
     <xacro:include filename="inertial_macros.xacro"/>
+
+    <!-- Materials -->
+    <xacro:include filename="materials.xacro"/>
     
-    <!-- Base Plate -->
+    <!-- Gazebo plugins -->
+    <xacro:include filename="gazebo.xacro"/>
+
+    <!-- Mesh/STL files Path -->
+    <xacro:property name="mesh_path"
+    value="file:///home/subham/ros_ws/diff_drive/src/diff_bot_description/meshes"/>
+
+    <!-- Chassis -->
     <xacro:include filename="base.xacro"/>
 
-    <!-- Caster -->
-    <xacro:include filename="caster.xacro"/>
-
-    <!-- Wheels -->
+    <!-- Rear Wheels -->
     <xacro:include filename="wheels.xacro"/>
+
+    <!-- Caster Wheels -->
+    <xacro:include filename="caster.xacro"/>
 
     <!-- LIDAR -->
     <xacro:include filename="lidar.xacro"/>
 
-    <!-- ROS Control -->
-    <!-- <xacro:include filename="ros2_control.xacro"/> -->
+    <!-- ROS2 Control -->
+    <xacro:include filename="ros2_control.xacro"/>
     
 </robot>

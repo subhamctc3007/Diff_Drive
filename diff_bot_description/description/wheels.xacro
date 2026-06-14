@@ -1,31 +1,33 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
   <!-- Variables -->
-  <xacro:property name="wheel_radius" value="0.035" />
+  <xacro:property name="wheel_radius" value="0.0425" />
   <xacro:property name="wheel_width" value="0.04" />
   <xacro:property name="wheel_gap" value="0.009" />
 
   <!-- Wheel Macro -->
-  <xacro:macro name="wheel" params="prefix parent x y z z_sign">
-    <joint name="${prefix}_joint" type="continuous">
+  <xacro:macro name="wheel" params="prefix parent x y z rotation">
+    <joint name="${prefix}_wheel_joint" type="continuous">
       <parent link="${parent}"></parent>
       <child link="${prefix}_wheel"></child>
-      <origin xyz="${x} ${y} ${z}" rpy="${z_sign * pi/2} 0 0" />
-      <axis xyz="0 0 ${-1 * z_sign}" />
+      <origin xyz="${x} ${y} ${z}" rpy="${rotation * pi/2} 0 0" />
+      <axis xyz="0 0 ${rotation * -1}" />
     </joint>
 
     <link name="${prefix}_wheel">
       <visual>
+        <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
         <geometry>
-          <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+          <mesh filename="${mesh_path}/wheel.stl"/>
+          <!-- <mesh filename="/home/subham/ros_ws/diff_drive/src/diff_bot_description/meshes/wheel.stl" scale="1 1 1"/> -->
         </geometry>
-        <material name="black">
-          <color rgba="0 0 0 1"/>
-        </material>
+        <material name="black"/>
       </visual>
       <collision>
+        <origin xyz="0 0 -0.02"/>
         <geometry>
-          <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+           <sphere radius="${wheel_radius}"/>
         </geometry>
       </collision>
       <xacro:inertial_cylinder mass="0.1" radius="${wheel_radius}" length="${wheel_width}">
@@ -35,8 +37,7 @@
   </xacro:macro>
 
   <!-- Wheels -->
-  <!-- <xacro:wheel prefix="top_left" parent="base_plate" x="${base_width/2 - 0.03}" y="${base_length/2 + wheel_gap + wheel_width/2}" z="-0.04" z_sign="1"/>
-  <xacro:wheel prefix="top_right" parent="base_plate" x="${base_width/2 - 0.03}" y="-${base_length/2 + wheel_gap + wheel_width/2}" z="-0.04" z_sign="1"/> -->
-  <xacro:wheel prefix="bottom_left" parent="base_plate" x="-${base_length/2 - 0.013}" y="${base_width/2 + wheel_gap + wheel_width/2}" z="-0.04" z_sign="-1"/>
-  <xacro:wheel prefix="bottom_right" parent="base_plate" x="-${base_length/2 - 0.013}" y="-${base_width/2 + wheel_gap + wheel_width/2}" z="-0.04" z_sign="1"/>
+  <xacro:wheel prefix="bottom_left" parent="chassis" x="0.0" y="0.21" z="0.0" rotation="1"/>
+  <xacro:wheel prefix="bottom_right" parent="chassis" x="0.0" y="-0.21" z="0.0" rotation="-1"/>
+
 </robot>
