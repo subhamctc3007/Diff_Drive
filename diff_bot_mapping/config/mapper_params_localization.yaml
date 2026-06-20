@@ -15,8 +15,8 @@ slam_toolbox:
     mode: localization
 
     # if you'd like to start localizing on bringup in a map and pose
-    map_file_name: /home/subham/ros_ws/diff_drive/src/diff_bot_mapping/maps/warehouse_map
-    # map_start_at_dock: true
+    map_file_name: /home/subham/ros_ws/diff_drive/src/diff_bot_mapping/maps/warehouse
+    map_start_at_dock: true
     #map_start_pose: [5.0, 1.0, 0.0]
 
     debug_logging: false

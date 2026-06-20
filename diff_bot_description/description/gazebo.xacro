@@ -1,13 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <!-- Required Gazebo system plugins -->
-  <!-- <gazebo>
-    <plugin filename="gz-sim-sensors-system"
-            name="gz::sim::systems::Sensors">
-      <render_engine>ogre2</render_engine>
-    </plugin>
-  </gazebo> -->
+  <!-- Required Gazebo system plugins -->
 
   <!-- Joint State Publisher Plugin -->
   <gazebo>
@@ -19,18 +13,9 @@
   <gazebo>
     <plugin filename="gz_ros2_control-system"
             name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-
-      <parameters>
-        /home/subham/ros_ws/diff_drive/install/diff_bot_description/share/diff_bot_description/config/controllers.yaml
-      </parameters>
-
+      <parameters>$(find diff_bot_description)/config/controllers.yaml</parameters>
     </plugin>
   </gazebo>
-
-  <!-- Differential Drive Plugin -->
-  <!-- <gazebo>
-    <plugin name='gz::sim::systems::DiffDrive' filename='gz-sim-diff-drive-system'/>
-  </gazebo> -->
   
   <!-- LIDAR Plugin -->
   <!-- YDLiDAR G2 Hardware Characteristics:

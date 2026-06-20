@@ -11,6 +11,7 @@
     <xacro:include filename="gazebo.xacro"/>
 
     <!-- Mesh/STL files Path -->
+    <!-- change the path as per your project structure -->
     <xacro:property name="mesh_path"
     value="file:///home/subham/ros_ws/diff_drive/src/diff_bot_description/meshes"/>
 

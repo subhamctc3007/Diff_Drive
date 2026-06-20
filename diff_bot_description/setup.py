@@ -21,9 +21,8 @@ setup(
             glob('config/*')),
         (os.path.join('share', package_name, 'meshes'),
             glob('meshes/*')),
-        (os.path.join('share', package_name, 'maps'),
-            glob('maps/*')),
     ],
+    
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='subham',

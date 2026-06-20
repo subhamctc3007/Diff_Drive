@@ -17,6 +17,11 @@ def generate_launch_description():
         value=os.environ.get('GZ_SIM_RESOURCE_PATH', '') + ':' + pkg_share
     )
 
+    system_plugin_path = SetEnvironmentVariable(
+        name='GZ_SIM_SYSTEM_PLUGIN_PATH',
+        value='/opt/ros/jazzy/lib'
+    )
+
     gz = ExecuteProcess(
         cmd=['gz', 'sim', '-r', world_path],
         output='screen'
@@ -33,6 +38,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         resource_path,
+        system_plugin_path,
         gz,
         gz_bridge,
     ])
